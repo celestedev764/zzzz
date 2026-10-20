@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wave — Player</title>
+<meta name="theme-color" content="#07070c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="bg"><div class="bg-img"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><span class="logo-mark"><i data-icon="wave"></i></span><span class="logo-text">Wave</span></div>
+    <nav>
+      <button class="nav-btn active" data-view="home"><i data-icon="search"></i><span>Buscar</span></button>
+      <button class="nav-btn" data-view="queue"><i data-icon="queue"></i><span>Fila</span></button>
+      <button class="nav-btn" data-view="playlists"><i data-icon="library"></i><span>Playlists</span></button>
+    </nav>
+    <div class="side-tv">
+      <button class="tv-btn no-tv" data-act="cast"><i data-icon="cast"></i><span id="castLbl">Transmitir pra TV</span></button>
+      <a class="tv-link no-tv" href="/#tv"><i data-icon="tv"></i><span>Usar esta tela como TV</span></a>
+      <a class="tv-link tv-only" href="/#"><i data-icon="x"></i><span>Sair do modo TV</span></a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <form class="search" id="searchForm"><i data-icon="search"></i><input id="q" type="search" placeholder="Busque músicas, artistas, álbuns…" autocomplete="off" enterkeyhint="search"><button type="submit" class="search-go">Buscar</button></form>
+      <button class="conn-pill" id="connPill" data-act="cast" hidden><span class="dot"></span><span id="connTxt">TV</span></button>
+    </header>
+    <section class="view active" id="view-home"><div id="homeContent"></div><div class="grid" id="results"></div><div class="more-wrap"><button id="more" class="btn" hidden>Carregar mais</button></div></section>
+    <section class="view" id="view-queue"></section>
+    <section class="view" id="view-playlists"></section>
+  </main>
+
+  <aside class="np" id="np">
+    <button class="np-close" data-act="npclose"><i data-icon="down"></i></button>
+    <div class="tv-code" id="tvCode" hidden></div>
+    <div class="np-media"><div class="np-video"><div id="yt"></div></div><div class="np-art empty" id="npArt"></div></div>
+    <div class="np-info"><div class="np-title" id="npTitle">Nada tocando</div><div class="np-artist" id="npArtist">Busque algo pra começar</div></div>
+    <div class="np-actions"><button class="chip" data-act="video" id="videoBtn">Mostrar vídeo</button><button class="chip" data-act="npsave">+ Playlist</button></div>
+    <div class="np-next"><h4>A seguir</h4><div class="rows" id="npNext"></div></div>
+  </aside>
+
+  <footer class="bar">
+    <div class="bar-track" data-act="npopen"><div class="bar-thumb" id="barThumb"></div><div class="bar-meta"><div class="bar-title" id="barTitle">Nada tocando</div><div class="bar-artist" id="barArtist"></div></div><div class="eq"><span></span><span></span><span></span><span></span></div></div>
+    <div class="bar-center">
+      <div class="ctrls">
+        <button class="ic" id="bShuffle" data-act="shuffle" title="Aleatório"><i data-icon="shuffle"></i></button>
+        <button class="ic" data-act="prev" title="Anterior"><i data-icon="prev"></i></button>
+        <button class="play" id="bPlay" data-act="toggle" title="Play/Pause"><i data-icon="play"></i></button>
+        <button class="ic" data-act="next" title="Próxima"><i data-icon="next"></i></button>
+        <button class="ic" id="bRepeat" data-act="repeat" title="Repetir"><i data-icon="repeat"></i></button>
+      </div>
+      <div class="prog"><span id="tCur">0:00</span><div class="range" id="seek"><div class="fill"></div><div class="knob"></div></div><span id="tDur">0:00</span></div>
+    </div>
+    <div class="bar-right"><button class="ic no-tv" id="bCast" data-act="cast" title="Transmitir pra TV"><i data-icon="cast"></i></button><i data-icon="vol"></i><div class="range vol" id="vol"><div class="fill"></div><div class="knob"></div></div></div>
+  </footer>
+
+  <nav class="tabs">
+    <button data-view="home" class="active"><i data-icon="search"></i>Buscar</button>
+    <button data-view="queue"><i data-icon="queue"></i>Fila</button>
+    <button data-view="playlists"><i data-icon="library"></i>Playlists</button>
+    <button data-act="cast"><i data-icon="cast"></i>TV</button>
+  </nav>
+</div>
+
+<div class="modal" id="modal"><div class="modal-card" id="modalCard"></div></div>
+<div class="toast" id="toast"></div>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
